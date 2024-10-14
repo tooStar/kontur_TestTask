@@ -32,8 +32,7 @@ class mailsend extends Mailable
      */
     public function build()
     {
-        return $this->view('mail')
-            ->from('info@my-site.ru')
+        return $this->view('home')
             ->subject('Заявка')
             ->with($this->mailData);
     }

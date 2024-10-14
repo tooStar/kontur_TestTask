@@ -19,9 +19,14 @@ class homecontroller extends Controller {
 
         $home->save();
 
-        /*$mailData = $req->all();
+        
+        $mailData = array(
+            'name' => $req->get('name'),
+            'phone' => $req->get('phone'),
+            'email' => $req->get('email'),
+        );
         $mail = ['andrey.morozov99@mail.ru'];
-        Mail::to($mail)->send(new mailsend($mailData));*/
+        Mail::to($mail)->send(new mailsend($mailData));
         
 
         return redirect()->route('home')->with('message','Всё отправлено!');
@@ -54,4 +59,10 @@ class homecontroller extends Controller {
         // $mail = ['yshliu_lose@inbox.ru'];
         $mail = ['eliseev_denis_95@mail.ru'];
         Mail::to($mail)->send(new MailSend($mailData));*/
+
+        /*Mail::send(new mailsend($mailData),array(
+            'name' => $req->get('name'),
+            'phone' => $req->get('phone'),
+            'email' => $req->get('email'),
+        ))*/
 }
