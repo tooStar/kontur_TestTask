@@ -8,8 +8,4 @@ Route::get('/', function () {
 })->name('home');
 
 Route::post('/submit', 'App\Http\Controllers\homecontroller@submit')->name('submit');
-
-//Route::post('/submit', 'mailcontroller@send')->name('mailsend');
-
-//Route::get('send', 'mailcontroller@send');
-//Route::post('/send', 'mailcontroller@send')->name('mail.send');
+Route::get('/submit/form','App\Http\Controllers\homecontroller@submit')->name('form');
