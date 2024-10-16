@@ -17,7 +17,7 @@
 
     @endif
 
-    <form action="{{ route('submit') }}" method="post">
+    <form action="{{ route('submit') }}" method="post" id="home">
         @csrf
 
         <div class="form-group">
@@ -36,5 +36,24 @@
         </div>
         <button type="submit" class="btn btn-success">Отправить</button>
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('form').submit(function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('submit') }}',
+                data: $('form').serialize(),
+                success: function(response) {
+                    alert('Данные успешно отправлены!');
+                    $('form')[0].reset();
+                }
+            });
+        });
+    });
+</script>
 
 @endsection
